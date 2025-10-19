@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的作品集</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- 自訂 CSS（選用） -->
+  <style>
+    /* 你可以在這裡加入自訂樣式 */
+  </style>
+</head>
+<body>
+  <!-- 1. 導航列 -->
+    <!-- 請自行完成 -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary"><!-- class ="navbar navbar-expand-lg":表示導行列會在大螢幕(lg)展現，小螢幕會收合-->  <!-- class="navbar-dark ":深色背景-->
+  <div class="container">
+    <a class="navbar-brand" href="#">李佳芮 chiara</a>   <!-- navbar brand : 專門用來放logo ， 或網站標題的class-->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><!--button class="navbar-toggler" : 即為小螢幕會出現的漢堡按鈕-->
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto"> <!--navbar-nav ms-auto :ul 表示無序清單 ，包含4個連接項目(li) -->
+        <li class="nav-item"><a class="nav-link" href="#home">首頁</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">關於</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portfolio">作品</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">聯絡</a></li>
+        <!-- 繼續完成其他選項 -->
+      </ul>
+    </div>
+  </div>
+</nav>
+  </nav>
+
+  <!-- 2. Hero Section --> <!--首頁區塊-->
+  <section id="home" class="py-5 text-center"> <!-- py-5 : 上下間距(其py-5是最大單位) -->
+    <div class="container"><!-- container: 內容置中，兩側產生留白 -->
+      <!-- 請自行完成 -->
+       <h1 class="display-4"> 你好，我是李佳芮</h1> <!-- 大標題 -->
+       <p class="lead"> 一位對於網頁開發充滿熱情的學生，希望有一天能成功自己建立小網站 </p>
+       <div>
+        <a href="#portfolio" class="btn btn-primary btn-lg my-2">查看作品</a> <!-- btn 按鈕 ，btn-primary : 顏色為主要樣式(藍) -->
+        <a href="contact" class="btn btn-secondary btn-lg my-2">與我聯絡</a>
+       </div>
+       </div>
+    </div>
+  </section>
+
+  <!-- 3. 關於我 --> <!-- 請自行完成：使用 col-md-6 建立兩欄 -->
+  <section id="about" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">關於我</h2>
+      <div class="row align-items-center"> <!-- row 是網格系統容器 ，用來包裹欄位(col) -->
+        <div class="col-md-6 text-center mb-4 mb-md-0"><!-- 建立了兩個 col-md-6 的 div ， 在中等螢幕 (md) 或更寬的裝置上，每欄佔據 6/12 (即 50%) 的寬度」，形成兩欄佈局。-->
+          <img src="lee.JPG" class="img-fluid rounded-circle" alt="個人照"> <!--rounded-circle: 方型圖片->圓形 -->
+        </div>
+        <div class="col-md-6">
+          <h3 class="fw-normal"> 學習中.... </h3>
+          <p class="fs-5"><!-- fw-bold:粗體/ fs-5:字體大小(數字越大，字體越小)-->
+            你好，我是一位對於全端開發充滿熱情的學生，目前專注在<span class="fw-bold">JAVA </span>和<span class="fw-bold"> 網頁程式設計 </span>的學習。
+          </p>
+          <p class="text-muted"> <!--text-muted:文字顏色為柔和灰色 -->
+            我喜歡學習新技術，並且運用在實際專案當中，致力於打造使用者友善的應用城市。
+          </p>
+        </div>       
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 技能展示 -->
+  <section id="skills" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">我的技能</h2>
+      <div class="row">
+        <!-- 請自行完成：至少 3 個 col-md-4 -->
+        <div class="col-md-4 mb-4"><!-- 每欄寬度為 4/12 (即 1/3)，剛好形成三欄式佈局 -->
+         <div class="card h-100 text-center"><!-- card class 是 Bootstrap 的卡片元件，用來將相關內容整合在一個區塊中。 h-100 是class，讓同一列的卡片都等高。-->
+          <div class="card-body">
+            <i class="bi bi-code-slash fs-1 text-primary"></i> <!-- <i> 標籤搭配 Bootstrap Icons 的 class:bi bi-code-slash-->
+            <h5 class="card-title mt-3">前端開發</h5>
+            <p class="card-text">熟悉 HTML, CSS, JavaScript，並能使用 Bootstrap 與 React 等框架打造響應式網頁介面。</p>
+          </div>
+       </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <i class="bi bi-server fs-1 text-success"></i>
+            <h5 class="card-title mt-3">後端程式</h5>
+            <p class="card-text">具備 JAVA 程式設計能力，能進行伺服器端邏輯開發與資料庫串接，建立穩定的應用程式後端。</p>
+          </div>
+        </div>
+      </div>  
+  <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <i class="bi bi-shield-check fs-1 text-danger"></i>
+            <h5 class="card-title mt-3">系統安全</h5>
+            <p class="card-text">了解系統分析與網路安全知識，能進行 Command Injection 等弱點掃描與防禦策略規劃。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- 5. 作品集 -->
+  <section id="portfolio" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">作品集</h2>
+      <div class="row">
+        <!-- 請自行完成：至少 3 個作品項目 -->
+        <div class="col-lg-4 col-md-6 mb-4"> <!-- 在大型 (lg) 螢幕上，每欄佔 4/12 (即 3 欄)。在中型 (md) 螢幕上，每欄佔 6/12 (即 2 欄) -->
+        <div class="card h-100">
+          <img src="作品集.png" class="card-img-top" alt="作品一"> <!-- 讓圖片完美貼合在卡片的頂部 -->
+          <div class="card-body">
+            <h5 class="card-title">個人網站</h5>
+            <p class="card-text">使用 Bootstrap 5 打造的個人形象網站，完整展示個人技能與經歷，並具備 RWD 響應式設計。</p>
+            <a href="#" class="btn btn-primary">查看詳情</a>
+          </div>
+        </div>
+      </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <img src="TAECT 2025.png" class="card-img-top" alt="作品二">
+          <div class="card-body">
+            <h5 class="card-title">TAECT 2025 </h5>
+            <p class="card-text"> 完成一份透過數位媒體達到教學助長的互動式介面</p>
+            <a href="#" class="btn btn-primary">查看詳情</a>
+          </div>
+        </div>
+      </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <img src="滲透測試.png" class="card-img-top" alt="作品三">
+          <div class="card-body">
+            <h5 class="card-title"> DVWA Brute Force </h5>
+            <p class="card-text">使用 Burp Suite 等工具對目標網站進行 DVWA Brute Force。</p>
+            <a href="#" class="btn btn-primary">查看詳情</a>
+          </div>
+        </div>
+      </div>  
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 聯絡表單 -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">聯絡我</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <form> <!-- 整個 <form> 結構，包括 form-label, form-control 等 class 的使用。-->
+            <!-- 請自行完成表單欄位 -->
+             <div class="mb-3"> <!-- 間距 -->
+            <label for="name" class="form-label">姓名</label>
+            <input type="text" class="form-control" id="name" required> <!-- form-control: 讓輸入框和文字區塊樣式統一，並設定寬度為 100%。 -->
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="subject" class="form-label">主旨</label>
+            <input type="text" class="form-control" id="subject" required>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">訊息</label>
+            <textarea class="form-control" id="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">送出</button> <!--w-100 :100%-->
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Footer -->
+  <footer class="bg-dark text-white text-center py-4"> <!--bg-dark 將頁尾背景設為深灰色/text-white 則將內部所有文字和圖示預設為白色-->
+    <!-- 請自行完成 -->
+     <div class="container">
+    <div class="mb-3">
+      <a href="https://www.facebook.com/li.jia.rui.979213/?locale=zh_TW" class="text-white mx-2 fs-4"><i class="bi bi-facebook"></i></a>
+      <a href="https://www.linkedin.com/in/jenny-undefined-5465a0388 " class="text-white mx-2 fs-4"><i class="bi bi-linkedin"></i></a>
+      <a href="https://www.youtube.com/@Jenny-e4v5x" class="text-white mx-2 fs-4"><i class="bi bi-youtube"></i></a>
+    </div>
+    <p class="mb-0">&copy; 2025 李佳芮. All Rights Reserved.</p>
+  </div>
+  </footer>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
