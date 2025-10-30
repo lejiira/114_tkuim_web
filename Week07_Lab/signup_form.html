@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員註冊表單</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <main class="container">
+        <h1>會員註冊</h1>
+        <form id="signup-form" novalidate>
+
+            <div class="form-group">
+                <label for="name">姓名：</label>
+                <input type="text" id="name" name="name" required aria-describedby="name-error">
+                <p class="error-message" id="name-error" aria-live="polite"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email：</label>
+                <input type="email" id="email" name="email" required aria-describedby="email-error">
+                <p class="error-message" id="email-error" aria-live="polite"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">手機：</label>
+                <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" aria-describedby="phone-error">
+                <p class="error-message" id="phone-error" aria-live="polite"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="password">密碼：</label>
+                <input type="password" id="password" name="password" required minlength="8" aria-describedby="password-error">
+                <p class="error-message" id="password-error" aria-live="polite"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="password-confirm">確認密碼：</label>
+                <input type="password" id="password-confirm" name="password_confirm" required aria-describedby="password-confirm-error">
+                <p class="error-message" id="password-confirm-error" aria-live="polite"></p>
+            </div>
+
+            <fieldset class="form-group" aria-describedby="interests-error">
+                <legend>興趣標籤（至少選 1 項）：</legend>
+                <div class="interest-group" id="interest-group">
+                    <label class="interest-label">
+                        <input type="checkbox" name="interests" value="sports"> 運動
+                    </label>
+                    <label class="interest-label">
+                        <input type="checkbox" name="interests" value="music"> 音樂
+                    </label>
+                    <label class="interest-label">
+                        <input type="checkbox" name="interests" value="travel"> 旅遊
+                    </label>
+                    <label class="interest-label">
+                        <input type="checkbox" name="interests" value="coding"> 程式
+                    </label>
+                </div>
+                <p class="error-message" id="interests-error" aria-live="polite"></p>
+            </fieldset>
+
+            <div class="form-group terms-group">
+                <label class="terms-label">
+                    <input type="checkbox" id="terms" name="terms" required aria-describedby="terms-error">
+                    我已閱讀並同意服務條款
+                </label>
+                <p class="error-message" id="terms-error" aria-live="polite"></p>
+            </div>
+
+            <button type="submit" id="submit-btn">註冊</button>
+        </form>
+
+        <div id="success-message" class="success-message" role="alert">
+            🎉 註冊成功！
+        </div>
+    </main>
+
+    <script src="signup_form.js" defer></script>
+</body>
+</html>
