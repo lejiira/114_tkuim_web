@@ -1,3 +1,4 @@
+<!--負責建立表單的骨架-->
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -10,11 +11,12 @@
 
     <main class="container">
         <h1>會員註冊</h1>
-        <form id="signup-form" novalidate>
+        <form id="signup-form" novalidate> <!--novalidate:-->
 
             <div class="form-group">
+
                 <label for="name">姓名：</label>
-                <input type="text" id="name" name="name" required aria-describedby="name-error">
+                <input type="text" id="name" name="name" required aria-describedby="name-error"> <!--aria-describedby:-->
                 <p class="error-message" id="name-error" aria-live="polite"></p>
             </div>
 
@@ -33,7 +35,15 @@
             <div class="form-group">
                 <label for="password">密碼：</label>
                 <input type="password" id="password" name="password" required minlength="8" aria-describedby="password-error">
+                
+                <!--顯示強度條和文字。-->
+                <div id="password-strength-meter">
+                    <div id="password-strength-bar"></div>
+                </div>
+                <span id="password-strength-text" class="strength-text" aria-live="polite"></span>
+
                 <p class="error-message" id="password-error" aria-live="polite"></p>
+
             </div>
 
             <div class="form-group">
@@ -73,7 +83,7 @@
         </form>
 
         <div id="success-message" class="success-message" role="alert">
-            🎉 註冊成功！
+             註冊成功！
         </div>
     </main>
 
