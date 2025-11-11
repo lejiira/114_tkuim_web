@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap實現RWD -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>互動式食譜產生器</title>
+    <!-- 透過CDN引入Bootstrap 5 的 CSS 樣式表 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- 引入函示庫 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+
+    <header class="bg-dark text-white text-center p-4">
+        <h1><i class="bi bi-book-half"></i> 互動式食譜產生器</h1>
+        <p class="lead">根據你擁有的食材來尋找食譜！</p>
+    </header>
+
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="navbar-nav">
+                <button class="nav-link btn btn-link active" id="nav-btn-home">
+                    <i class="bi bi-house-door-fill"></i> 首頁
+                </button>
+                <button class="nav-link btn btn-link" id="nav-btn-share">
+                    <i class="bi bi-plus-circle-fill"></i> 分享你的食譜
+                </button>
+            </div>
+        </div>
+    </nav>
+
+<!-- 包裹「現有的」食譜產生器 ， 方便透過JS去控制整區的顯示和隱藏 -->
+
+<div id="page-generator">
+    <div class="container mt-4">
+        <div class="row">
+            <!-- aside class:側邊欄 -->
+            <aside class="col-lg-5">
+                <div class="p-3 bg-light rounded shadow-sm">
+                    <h3><i class="bi bi-basket3-fill"></i> 你冰箱有什麼？</h3>
+                    <hr>
+                    <form id="ingredient-form">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="雞蛋" id="check-egg">
+                            <label class="form-check-label" for="check-egg">
+                                雞蛋 (Eggs)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="番茄" id="check-tomato">
+                            <label class="form-check-label" for="check-tomato">
+                                番茄 (Tomatoes)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="雞肉" id="check-chicken">
+                            <label class="form-check-label" for="check-chicken">
+                                雞肉 (Chicken)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="洋蔥" id="check-onion">
+                            <label class="form-check-label" for="check-onion">
+                                洋蔥 (Onion)
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 mt-3" id="generate-btn">
+                            <i class="bi bi-search"></i> 產生食譜
+                        </button>
+                    </form>
+                </div>
+            </aside>
+
+            <!-- 食譜顯示區 -->
+            <main class="col-lg-7">
+                <h2>食譜結果</h2>
+                
+                <div id="recipe-results" class="row row-cols-1 row-cols-md-2 g-4">
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="https://img.freepik.com/premium-vector/cartoon-woman-cooking-kitchen-with-spoon-bowl-food_651201-1962.jpg" class="card-img-top" alt="食譜圖片">
+                            <div class="card-body">
+                                <h5 class="card-title">範例食譜</h5>
+                                <p class="card-text">這是一張範例卡片，顯示食譜的簡短描述。</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                <hr class="my-4">
+
+                <article id="recipe-details" class="p-3 bg-white rounded shadow-sm" style="display: none;">
+                    <h3>食譜詳情：<span id="recipe-title"></span></h3>
+                    
+                    <div class="mb-3">
+                        <label for="servings" class="form-label">份量 (人份)：</label>
+                        <input type="number" class="form-control" id="servings" value="1" min="1">
+                    </div>
+
+                    <h4>所需食材：</h4>
+                    <ul id="ingredient-list">
+                        </ul>
+
+                    <h4>步驟：</h4>
+                    <div id="recipe-steps">
+                        </div>
+                </article>
+            </main>
+        </div>
+    </div>
+</div>
+
+<!--3. 新增「分享表單」區塊 (預設隱藏)-->
+<div id="page-share" style="display: none;">
+        <main class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body p-4 p-md-5">
+                            <h2 class="text-center mb-4">分享你的食譜</h2>
+                            
+                            <form id="share-form" novalidate>
+                                
+                                <div class="mb-3">
+                                    <label for="recipe-name-input" class="form-label">食譜名稱</label>
+                                    <input type="text" class="form-control" id="recipe-name-input" required>
+                                    <div class="invalid-feedback">請輸入食譜名稱。</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="recipe-image-input" class="form-label">圖片網址</label>
+                                    <input type="url" class="form-control" id="recipe-image-input" required>
+                                    <div class="invalid-feedback">請輸入有效的圖片網址。</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="recipe-steps-textarea" class="form-label">食譜步驟</label>
+                                    <textarea class="form-control" id="recipe-steps-textarea" rows="5" required minlength="10"></textarea>
+                                    <div class="invalid-feedback">請輸入至少 10 個字的食譜步驟。</div>
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="consent-check" 
+                                           required disabled>
+                                    <label class="form-check-label" for="consent-check">
+                                        我已閱讀並同意
+                                        <span id="open-terms-link" class="text-primary fw-bold" style="cursor: pointer;">
+                                            授權條款
+                                        </span>
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        您必須同意授權條款才能提交。
+                                    </div>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">提交分享</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <footer class="text-center text-muted p-4 mt-5 bg-light">
+        <p>&copy; 2025 互動式食譜產生器</p>
+    </footer>
+
+    <!-- 新增「Modal 彈窗」的 HTML -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">授權條款</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>當您提交食譜時，代表您同意以下條款：</p>
+                    <ol>
+                        <li>您保證此食譜為您原創，或您擁有合法轉載權。</li>
+                        <li>您同意授權本站永久、免費使用、重製...等權利。</li>
+                        <li>您理解本站為學術專題用途。</li>
+                        <li>...更多條款...</li>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">我不同意</button>
+                    <button type="button" class="btn btn-primary" id="agree-to-terms-btn">我已閱讀並同意</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script src="app.js" defer></script>
+    </body>
+</html>

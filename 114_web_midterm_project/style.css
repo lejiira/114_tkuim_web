@@ -1,0 +1,77 @@
+/* ----------------------------------
+   1. 整體與字型 (可選)
+------------------------------------- */
+
+/* 我們可以使用 Google Fonts 來引入更美觀的字體 (可選) */
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap'); */
+
+body {
+    /* font-family: 'Noto Sans TC', sans-serif; */ /* 套用 Google Font */
+    background-color: #f8f9fa; /* 給 body 一個非常淡的灰色背景 */
+}
+
+/* ----------------------------------
+   2. 頁首 (Header)
+------------------------------------- */
+header {
+    /* 為頁首加上一個漸層背景，比單純的 bg-dark 好看 */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+/* ----------------------------------
+   3. 側邊欄 (Aside)
+------------------------------------- */
+aside .bg-light {
+    /* 讓側邊欄有「黏滯」效果 */
+    /* 當頁面向下滾動時，它會黏在頂部 */
+    position: sticky;
+    top: 20px; /* 距離頂部 20px */
+}
+
+/* ----------------------------------
+   4. 食譜卡片 (Card)
+------------------------------------- */
+
+.card {
+    /* 我們在 JS 中有動態加入 'shadow-sm'，
+      這裡我們可以再加強「滑鼠移過 (hover)」時的效果 
+    */
+    transition: all 0.3s ease-in-out; /* 讓所有變化都有 0.3 秒的過渡動畫 */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* 滑鼠移過時，卡片向上移動 5px */
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important; /* 加深陰影 */
+}
+
+.card .card-img-top {
+    /* 確保所有圖片都一樣高，避免排版錯亂 */
+    height: 200px;
+    object-fit: cover; /* 圖片會被裁切以填滿空間，但不會變形 */
+}
+
+/* ----------------------------------
+   5. 食譜詳情 (Article)
+------------------------------------- */
+#recipe-details {
+    /* 讓詳情區塊更突出 */
+    border: 1px solid #dee2e6;
+    border-left: 5px solid #667eea; /* 左側加上一個重點色條 */
+}
+
+#recipe-details h3,
+#recipe-details h4 {
+    color: #495057; /* 讓標題顏色深一點 */
+    font-weight: 700; /* 粗體 */
+}
+
+/* 針對「即時計算」的食材清單 */
+#ingredient-list li {
+    font-size: 1.1rem; /* 放大一點，更清楚 */
+    padding: 5px 0; /* 增加一點行距 */
+}
+
+/* 針對步驟 */
+#recipe-steps {
+    line-height: 1.8; /* 增加行高，更好閱讀 */
+}
