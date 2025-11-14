@@ -1,13 +1,8 @@
-/* ----------------------------------
-   1. 整體與字型 (可選)
-------------------------------------- */
 
-/* 我們可以使用 Google Fonts 來引入更美觀的字體 (可選) */
-/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap'); */
 
 body {
     /* font-family: 'Noto Sans TC', sans-serif; */ /* 套用 Google Font */
-    background-color: #f8f9fa; /* 給 body 一個非常淡的灰色背景 */
+    background-color: #badfe4; /* 給 body 一個非常淡的灰色背景 */
 }
 
 /* ----------------------------------
@@ -15,7 +10,7 @@ body {
 ------------------------------------- */
 header {
     /* 為頁首加上一個漸層背景，比單純的 bg-dark 好看 */
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    background: linear-gradient(135deg, #0ba79d99 30%, #1277ae 100%) !important;
 }
 
 /* ----------------------------------
@@ -74,4 +69,36 @@ aside .bg-light {
 /* 針對步驟 */
 #recipe-steps {
     line-height: 1.8; /* 增加行高，更好閱讀 */
+}
+
+/* ----------------------------------
+    深色模式覆寫（使用 data-bs-theme="dark"）
+------------------------------------- */
+
+[data-bs-theme="dark"] body {
+    background-color: #0b1220; /* 深色背景 */
+    color: #e6eef6; /* 淺色文字 */
+}
+
+[data-bs-theme="dark"] header {
+    background: linear-gradient(135deg, #0f1720 0%, #111827 100%) !important;
+}
+
+[data-bs-theme="dark"] .card {
+    background-color: #0f1724;
+    color: #e6eef6;
+    border-color: #1f2937;
+}
+
+[data-bs-theme="dark"] .card .card-img-top {
+    opacity: 0.95;
+}
+
+[data-bs-theme="dark"] #recipe-details {
+    border-left-color: #3b82f6; /* 左側重點色調 */
+    border-color: #1f2937;
+}
+
+[data-bs-theme="dark"] .match-highlight {
+    box-shadow: 0 0 0 0.2rem rgba(59,130,246,0.12);
 }

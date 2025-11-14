@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
    
     <link rel="stylesheet" href="style.css">
+    <!--highlight for matched ingredients-->
+    <style> 
+        .match-highlight{background:linear-gradient(90deg,#fff59d,#ffe082);color:#000;border-radius:6px;padding:2px 6px;border:1px solid #ffd54f}
+        .meta{font-size:0.9rem}
+    </style>
 </head>
 <body> 
 
@@ -33,8 +38,7 @@
         </div>
     </nav>
 
-<!-- 包裹「現有的」食譜產生器 ， 方便透過JS去控制整區的顯示和隱藏 -->
-
+<!-- 包裹「現有的」食譜產生器 ， 方便透過JS去控制整區的顯示和隱藏  -- 替未來會被JS控制的元素 都加上ID -->
 <div id="page-generator">
     <div class="container mt-4">
         <div class="row">
@@ -68,6 +72,55 @@
                                 洋蔥 (Onion)
                             </label>
                         </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="豬絞肉" id="check-porkmince">
+                            <label class="form-check-label" for="check-porkmince">豬絞肉 (Minced pork)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="醬油" id="check-soy">
+                            <label class="form-check-label" for="check-soy">醬油 (Soy sauce)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="米酒" id="check-ricewine">
+                            <label class="form-check-label" for="check-ricewine">米酒 (Rice wine)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="九層塔" id="check-basil">
+                            <label class="form-check-label" for="check-basil">九層塔 (Basil)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="蚵仔" id="check-oyster">
+                            <label class="form-check-label" for="check-oyster">蚵仔 (Oysters)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="地瓜粉" id="check-starch">
+                            <label class="form-check-label" for="check-starch">地瓜粉 (Sweet potato starch)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="排骨" id="check-porkribs">
+                            <label class="form-check-label" for="check-porkribs">排骨 (Pork ribs)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="薑" id="check-ginger">
+                            <label class="form-check-label" for="check-ginger">薑 (Ginger)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="蔥" id="check-scallion">
+                            <label class="form-check-label" for="check-scallion">蔥 (Scallion)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="冰糖" id="check-sugar">
+                            <label class="form-check-label" for="check-sugar">冰糖 / 糖 (Rock sugar / Sugar)</label>
+                        </div>
+                        <!-- 篩選模式選擇 -->
+                        <div class="mt-3">
+                            <label for="filter-mode" class="form-label">食材篩選方式</label>
+                            <select id="filter-mode" class="form-select">
+                                <option value="haveAll">完全符合勾選食材</option>
+                                <option value="include" selected>包含任一勾選食材</option>
+                            </select>
+                        </div> 
+                        <!-- 清除按鈕 -->
                         <button type="submit" class="btn btn-primary w-100 mt-3" id="generate-btn">
                             <i class="bi bi-search"></i> 產生食譜
                         </button>
@@ -114,7 +167,7 @@
     </div>
 </div>
 
-<!--3. 新增「分享表單」區塊 (預設隱藏)-->
+<!-- 新增「分享表單」區塊 (預設會隱藏)-->
 <div id="page-share" style="display: none;">
         <main class="container my-5">
             <div class="row justify-content-center">
@@ -133,8 +186,8 @@
 
                                 <div class="mb-3">
                                     <label for="recipe-image-input" class="form-label">圖片網址</label>
-                                    <input type="url" class="form-control" id="recipe-image-input" required>
-                                    <div class="invalid-feedback">請輸入有效的圖片網址。</div>
+                                    <input type="text" class="form-control" id="recipe-image-input" required>
+                                    <div class="invalid-feedback"> 網址格式不符，必須以 .jpg, .png, .gif 等圖片格式結尾。</div>
                                 </div>
 
                                 <div class="mb-3">
@@ -200,7 +253,8 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    <!-- 'defer' 保證了這份 JS 腳本在執行時，所有的 HTML 元素都已經準備好了。-->
     <script src="app.js" defer></script>
     </body>
+
 </html>
