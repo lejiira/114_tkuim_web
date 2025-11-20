@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "91765bfe-cec2-460e-859d-b92d318123b0",
+		"name": "Week09 Signup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50158814",
+		"_collection_link": "https://lejiira-775471.postman.co/workspace/LI-Chiajui's-Workspace~d5a38e06-f033-4db0-8387-9ac8ff0201b8/collection/50158814-91765bfe-cec2-460e-859d-b92d318123b0?action=share&source=collection_link&creator=50158814"
+	},
+	"item": [
+		{
+			"name": "Signup Test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('狀態碼 201', () => pm.response.code === 201);\r",
+							"pm.expect(pm.response.json()).to.have.property('participant');\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"測試同學\",\r\n    \"email\": \"test@example.com\",\r\n    \"phone\": \"0912345678\",\r\n    \"password\": \"abc12345\",\r\n    \"confirmPassword\": \"abc12345\",\r\n    \"interests\": [\"前端\", \"後端\"],\r\n    \"terms\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/signup",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": ""
+		}
+	]
+}
