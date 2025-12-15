@@ -1,0 +1,639 @@
+:root {
+    --primary-color: #3e5d45;
+    /* Approximate deep green from screenshot */
+    --secondary-color: #5c7a63;
+    --text-color: #333;
+    --light-text: #fff;
+    --background-light: #f9f9f9;
+    --accent-color: #d4a373;
+    /* Earthy accent if needed */
+    --font-main: 'Inter', sans-serif;
+    /* Modern font */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-light);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+    border-radius: 50%;
+    /* Assume circular logo */
+    background: white;
+    /* Fallback */
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav a {
+    font-size: 0.95rem;
+    transition: opacity 0.3s;
+}
+
+nav a:hover {
+    opacity: 0.8;
+}
+
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 90vh;
+    /* Screenshot shows full screen feel */
+    background-image: linear-gradient(rgba(62, 93, 69, 0.3), rgba(62, 93, 69, 0.3)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop');
+    /* Placeholder: Kids group */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Latest News Section */
+.news-section {
+    background-color: var(--primary-color);
+    padding: 4rem 2rem;
+    color: white;
+    text-align: center;
+}
+
+.news-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.news-card {
+    background: white;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 4px;
+    /* Slight rounding */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.news-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.news-card p {
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.cert-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.cert-container img {
+    max-width: 300px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Video Section */
+.video-section {
+    background-color: var(--primary-color);
+    /* Seems to continue the green theme or verify? Screenshot 2025-12-15 104143 shows green bg */
+    padding: 4rem 2rem;
+    text-align: center;
+    color: white;
+}
+
+.video-section h2 {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+.video-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    border: 2px solid white;
+    /* Just to frame it like screenshot */
+}
+
+/* 16:9 Aspect Ratio */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 */
+    height: 0;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 0;
+    /* Full width images */
+    background: #222;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.02);
+    z-index: 10;
+}
+
+/* Footer */
+footer {
+    background-color: #bfcdc1;
+    /* Lighter Sage Green from screenshot footer */
+    color: #555;
+    padding: 3rem 2rem 1rem;
+    text-align: center;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    font-size: 2rem;
+    color: #d62976;
+    /* Example Instagram color or just specific colors */
+}
+
+.social-links .fb {
+    color: #1877f2;
+}
+
+.social-links .ig {
+    color: #d62976;
+}
+
+.footer-info {
+    margin-bottom: 1rem;
+}
+
+.back-to-top {
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* Chat Widget */
+.chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    /* Screenshot shows right */
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.chat-btn {
+    background-color: #5c7a63;
+    /* Muted Green */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    border: none;
+    font-size: 1rem;
+}
+
+.chat-btn:hover {
+    transform: translateY(-2px);
+}
+
+.chat-box {
+    background: white;
+    width: 300px;
+    height: 400px;
+    /* Fixed height for demo */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+    display: none;
+    /* Hidden by default */
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-box.active {
+    display: flex;
+}
+
+.chat-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header h4 {
+    font-size: 1rem;
+}
+
+.close-chat {
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.chat-content {
+    flex: 1;
+    padding: 15px;
+    background-color: #f1f1f1;
+    overflow-y: auto;
+}
+
+.chat-msg {
+    background: white;
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    font-size: 0.9rem;
+}
+
+.chat-msg.bot {
+    background: #e2e2e2;
+    align-self: flex-start;
+}
+
+.chat-input-area {
+    padding: 10px;
+    background: white;
+    border-top: 1px solid #ddd;
+    display: flex;
+    gap: 5px;
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.chat-input-area button {
+    padding: 8px 15px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .news-card {
+        width: 90%;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    /* Simplify for now or standard burger */
+
+    .donation-container {
+        flex-direction: column;
+    }
+}
+
+/* Donation Page Styles */
+.donation-banner {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.donation-banner h1 {
+    font-size: 3rem;
+    letter-spacing: 5px;
+}
+
+.donation-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
+}
+
+.donation-intro h2 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.donation-intro p {
+    color: #555;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.donation-intro strong {
+    color: var(--primary-color);
+}
+
+.donation-container {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+    gap: 4rem;
+}
+
+.donation-left {
+    flex: 1;
+}
+
+.donation-info-box {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 2px;
+    margin-bottom: 2rem;
+}
+
+.donation-info-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.donation-info-box p {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.donation-info-box .cta-text {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.donation-contact h4 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.donation-contact p {
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.donation-social-icons a {
+    font-size: 3rem;
+    margin-right: 15px;
+    color: black;
+}
+
+.donation-right {
+    flex: 1;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    /* Square borders as per screenshot */
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: 1px solid var(--primary-color);
+}
+
+.submit-btn {
+    background-color: #fcf8e3;
+    /* Cream/Light Yellow */
+    color: white;
+    /* Wait, screenshot shows white text on Green button actually? 
+  Let's re-check. Screenshot 2 shows "立即展開交談!" button on bottom right.
+  Wait, the form submit button text is not clearly visible as cream in my memory, let me check the user description.
+  User said: Submit Button: "傳送" (Cream color).
+  Wait, looking at screenshot 1 (uploaded_image_0...), the button at the bottom right of the form is "傳送" but the background looks VERY light yellow/cream and the text is white? Or is the text light?
+  Actually, looking really closely at the second screenshot (uploaded_image_1...), the "立即展開交談!" is green.
+  The first screenshot (uploaded_image_0...) shows the form. The button at the bottom is "傳送". It looks like a light beige/cream block with white text? Or maybe the text is barely visible?
+  Actually, typically buttons are darker. Let's look at the "Immediate Chat" button, it's green.
+  The "傳送" button in screenshot 0 looks like a light yellow background. The text might be white or light grey.
+  I will stick to a light yellow background and maybe dark text if white is unreadable, or sticking to the request "Cream color".
+  Actually, looking at the contrast, if the button is #fcf8e3 (cream), white text would be invisible. The text is probably dark or the button is actually Green and the User meant "Cream text"?
+  Let's look at the screenshot again. The screenshot shows a button at the very bottom right of the form area. It looks like a PALE YELLOW background. The text "傳送" inside seems White. That is very low contrast.
+  However, I will follow the visual of "Pale Yellow Background" and ensure text is readable (maybe dark green). 
+  */
+    background-color: #fdf5e6;
+    color: white;
+    /* This might be hard to read */
+    color: transparent;
+    /* No, let's play safe */
+    color: white;
+    /* Wait, looking at the crop, the button is "傳送" and it's on a yellowish background. 
+     Okay, I will make it yellowish background, white text, but add a text-shadow or just make text dark green for readability if needed.
+     Actually, let's try a specific color from the screenshot. It looks like #fffacd (LemonChiffon) or #f0e68c (Khaki).
+     Text is likely white. I will try that.
+  */
+    width: 100%;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Re-evaluating the screenshot 0... The button background is definitely a very light yellow/cream. 
+   There is a green chat button on top of it? No, the chat button is floating.
+   The form submit button is "傳送". The background is #f9f4d8 roughly. 
+   The text color is White. Hard to read.
+   BUT, I will use the "CREAM" color requested.
+*/
+.form-submit-btn {
+    background-color: #fffacd;
+    color: white;
+    /* Per visual, though poor accessibility */
+    border: none;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+/* Actually, let's make it more readable for "PREMIUM" feel even if exact copy. */
+.form-submit-btn {
+    background-color: #fdf2d0;
+    color: white;
+    font-weight: bold;
+}

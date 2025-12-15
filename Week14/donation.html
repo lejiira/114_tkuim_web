@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>捐款 - Youth Impact Taiwan</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header (Reuse) -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-earth-asia fa-2x"></i>
+            <span>Youth Impact Taiwan 社團法人青年啟航協會</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">主頁</a></li>
+                <li><a href="#">關於我們</a></li>
+                <li><a href="#">活動成果</a></li>
+                <li><a href="#">合作夥伴</a></li>
+                <li><a href="#">加入我們</a></li>
+                <li><a href="donation.html" style="font-weight: bold; text-decoration: underline;">捐款</a></li>
+                <li class="lang-selector">
+                    <i class="fa-solid fa-globe"></i> 中文 <i class="fa-solid fa-chevron-down"
+                        style="font-size: 0.7em;"></i>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Donation Banner -->
+    <section class="donation-banner">
+        <h1>捐款</h1>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="donation-intro">
+        <h2>「一點點小小的心意，也能改變台灣的未來！」</h2>
+        <p>Youth Impact Taiwan 需要您的幫忙 <span style="color:#ff6b6b; font-weight:bold;">!!</span></p>
+        <p>
+            由於組織剛剛成立，每一部分都是由這些台灣新鮮青年一點一滴親手努力打造。<br>
+            為了使活動能夠順利進行，我們正在多方募款，以實現籌備已久的理想。<br>
+            您一點點的小心意，是肯定我們夢想的第一助力，更是讓許多孩子踏入國際視野的第一腳印！
+        </p>
+        <p style="margin-top: 2rem;"><strong>Youth Impact Taiwan 獻上最大的敬意感謝您的捐款!</strong></p>
+    </section>
+
+    <!-- Donation Info & Form -->
+    <section class="donation-container">
+        <!-- Left Column -->
+        <div class="donation-left">
+            <div class="donation-info-box">
+                <h3>《捐款方式》</h3>
+                <p>郵局帳號： 0081024 0718322</p>
+                <p>解款行代號： 7000021</p>
+                <p>戶名： 陳玉安</p>
+                <p>聯繫方式： 電話 0971-750-448</p>
+                <p class="cta-text">好人做善事!請在右側留下您的資料。</p>
+            </div>
+
+            <div class="donation-contact">
+                <h4>EMAIL</h4>
+                <p>youthimpacttw@gmail.com</p>
+
+                <h4>SOCIAL MEDIA</h4>
+                <div class="donation-social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="donation-right">
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>姓氏</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>名字</label>
+                        <input type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>匯款帳戶後四碼</label>
+                    <input type="text">
+                </div>
+
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>電話</label>
+                    <input type="tel">
+                </div>
+
+                <div class="form-group">
+                    <label>聯繫地址</label>
+                    <input type="text">
+                </div>
+
+                <button type="submit" class="form-submit-btn">傳送</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer (Reuse) -->
+    <footer>
+        <div class="social-links">
+            <a href="#" class="ig"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="fb"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <div class="footer-info">
+            <p>youthimpacttw@gmail.com | +1 909 979 0748</p>
+            <p>&copy; 2025 BY YOUTH IMPACT TAIWAN 青年啟航協會</p>
+        </div>
+        <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <i class="fa-solid fa-chevron-up"></i>
+        </div>
+    </footer>
+
+    <!-- Chat Widget (Reuse) -->
+    <div class="chat-widget">
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">
+                <h4>客服中心</h4>
+                <span class="close-chat" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></span>
+            </div>
+            <div class="chat-content">
+                <div class="chat-msg bot">
+                    您好！請問有什麼我可以幫您的嗎？
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" placeholder="輸入訊息...">
+                <button><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="chat-btn" onclick="toggleChat()">立即展開交談!</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
