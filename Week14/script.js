@@ -8,8 +8,13 @@ function scrollToNews() {
     newsSection.scrollIntoView({ behavior: 'smooth' });
 }
 
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
+
 // Optional: Auto-close chat if clicked outside (Enhancement)
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     const chatWidget = document.querySelector('.chat-widget');
     const chatBox = document.getElementById('chatBox');
     const chatBtn = document.querySelector('.chat-btn');
