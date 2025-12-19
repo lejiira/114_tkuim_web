@@ -1,0 +1,18 @@
+version: '3.9'
+services: 
+  mongodb:
+    image: mongo:7
+    container_name: week12-mongo
+    restart: unless-stopped
+    ports: #對內 對外走的port都是27017
+      - "27017:27017"
+    environment: # 資料庫帳號密碼
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: week12
+    volumes: # 資料庫資料掛載
+      - ./mongo-data:/data/db          # 保留資料
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/init.js:ro
+
+#當在此資料夾下，打:docker compose up -d 啟動 Mongo image 。
+#docker ps  查看正在運作的容器

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 12 - 活動報名系統</title>
+    <style>
+        /* 簡單的 CSS，用來切換顯示 */
+        .hidden { display: none; }
+        .container { max-width: 600px; margin: 2rem auto; padding: 1rem; border: 1px solid #ccc; }
+        .card { border: 1px solid #eee; padding: 10px; margin-bottom: 10px; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Week 12 活動報名系統</h1>
+        
+        <div id="login-section">
+            <h2>請先登入</h2>
+            <input type="text" id="login-email" placeholder="Email">
+            <input type="password" id="login-password" placeholder="密碼">
+            <button id="btn-login">登入</button>
+            <p class="error" id="login-msg"></p>
+        </div>
+
+        <div id="dashboard-section" class="hidden">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3>你好，<span id="user-display">User</span></h3>
+                <button id="btn-logout">登出</button>
+            </div>
+            <hr>
+
+            <h4>📝 填寫報名表</h4>
+            <form id="signup-form">
+                <input type="text" id="name" placeholder="姓名" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="tel" id="phone" placeholder="電話" required>
+                <button type="submit">送出報名</button>
+            </form>
+            <p id="form-msg"></p>
+
+            <hr>
+
+            <h4>📋 報名名單</h4>
+            <div id="list-container">
+                <p>載入中...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="./login.js"></script>
+    <script src="./signup_form.js"></script>
+</body>
+</html>
