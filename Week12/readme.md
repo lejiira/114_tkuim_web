@@ -1,4 +1,4 @@
-# Week 12 - 全端活動報名系統開發筆記
+# Week 12 
 
 ## 問題整合:
 - Q1: npm run dev 無法啟動，顯示 "Missing script: dev"？
