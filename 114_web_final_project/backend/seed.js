@@ -32,21 +32,21 @@ const seedDB = async () => {
     try {
         // 1. 連線資料庫
         await mongoose.connect(process.env.MONGO_URI);
-        console.log('✅ 連線成功，準備寫入種子資料...');
+        console.log('連線成功，準備寫入種子資料...');
 
         // 2. 清空舊資料 (避免重複)
         await Animal.deleteMany({});
-        console.log('🗑️  舊資料已清除');
+        console.log('舊資料已清除');
 
         // 3. 寫入新資料
         await Animal.insertMany(sampleAnimals);
-        console.log('wv  成功寫入 3 筆動物資料！');
+        console.log('成功寫入 3 筆動物資料！');
 
         // 4. 結束連線
         mongoose.connection.close();
-        console.log('👋 連線已關閉');
+        console.log('連線已關閉');
     } catch (error) {
-        console.error('❌ 發生錯誤:', error);
+        console.error('發生錯誤:', error);
         mongoose.connection.close();
     }
 };

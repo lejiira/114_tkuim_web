@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  # 定義 MongoDB 服務
+  mongo_db:
+    image: mongo:latest        # 使用最新版的 MongoDB 映像檔
+    container_name: my_animal_mongo_final_project  # 幫容器取個名字，方便識別
+    restart: always            # 如果當機自動重啟
+    ports:
+      - "27017:27017"          # [外部Port : 內部Port] 打通電腦與容器的連線
+    volumes:
+      - mongo_data:/data/db    # 設定資料卷，讓資料庫關掉後資料還在
+
+# 定義資料卷 (Volume)
+volumes:
+  mongo_data:

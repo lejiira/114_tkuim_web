@@ -5,27 +5,31 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
+// --- 1. 引入路由檔案 (新增) ---
+const animalRoutes = require('./routes/animals');
+const authRoutes = require('./routes/auth');
+
 const app = express();
 
-// Middleware (中介軟體)
-app.use(cors()); // 允許跨域
-app.use(express.json()); // 允許解析 JSON 格式的 Request
+app.use(cors());
+app.use(express.json());
 
-// 資料庫連線 (請修改下方的連線字串)
-// 實務上建議放在 .env 檔案，但為了方便測試先寫在這裡
-// 格式: mongodb+srv://<帳號>:<密碼>@<cluster>.mongodb.net/<資料庫名>
 const MONGO_URI = process.env.MONGO_URI;
-console.log(' 準備連線至資料庫...'); // 偵錯用：確認程式有跑
-mongoose.connect(MONGO_URI)
-    .then(() => console.log(' MongoDB 資料庫連線成功'))
-    .catch(err => console.error(' 資料庫連線失敗:', err));
 
-// 測試路由
+mongoose.connect(MONGO_URI)
+    .then(() => console.log('✅ MongoDB 資料庫連線成功！'))
+    .catch(err => console.error('❌ 資料庫連線失敗:', err));
+
+// --- 2. 設定路由路徑 (新增) ---
+// 意思是：只要網址是 "/api/animals" 開頭的，都交給 animalRoutes 處理
+app.use('/api/animals', animalRoutes);
+app.use('/api/auth', authRoutes);
+
+// 測試路由 (這個可以留著當首頁檢查用)
 app.get('/', (req, res) => {
-    res.send('後端伺服器運作中！(P0 Check)');
+    res.send('後端伺服器運作中！');
 });
 
-// 啟動 Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`🚀 伺服器啟動於 http://localhost:${PORT}`);
