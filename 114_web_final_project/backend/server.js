@@ -8,7 +8,7 @@ require('dotenv').config();
 // --- 1. 引入路由檔案 (新增) ---
 const animalRoutes = require('./routes/animals');
 const authRoutes = require('./routes/auth');
-
+const adoptRoutes = require('./routes/adopt');
 const app = express();
 
 app.use(cors());
@@ -24,7 +24,7 @@ mongoose.connect(MONGO_URI)
 // 意思是：只要網址是 "/api/animals" 開頭的，都交給 animalRoutes 處理
 app.use('/api/animals', animalRoutes);
 app.use('/api/auth', authRoutes);
-
+app.use('/api/adopt', adoptRoutes);
 // 測試路由 (這個可以留著當首頁檢查用)
 app.get('/', (req, res) => {
     res.send('後端伺服器運作中！');
