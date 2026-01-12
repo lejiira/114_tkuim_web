@@ -1,4 +1,5 @@
 # 專案結構
+```text
 114_web_final_project/ 
 ├── .gitignore              # Git 忽略清單 (忽略 node_modules, .env 等)
 ├── README.md               # 專案說明文件 (包含簡介、安裝教學、API 規格)
@@ -45,3 +46,4 @@
     ├── index.html          # 網頁骨架
     ├── package.json        # 前端套件清單 (react, bootstrap, react-router-dom...)
     └── vite.config.js      # Vite 設定檔
+```
