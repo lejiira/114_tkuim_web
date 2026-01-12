@@ -1,32 +1,34 @@
 // backend/routes/auth.js
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User'); // 引入使用者設計圖
+const User = require('../models/User');
+const bcrypt = require('bcryptjs'); // ✨ 1. 引入 bcrypt 套件
 
 // --- API: 會員註冊 ---
 // 路徑: POST /api/auth/register
 router.post('/register', async (req, res) => {
     try {
-        // 1. 從前端拿到使用者輸入的資料 (req.body)
         const { email, password, nickname } = req.body;
 
-        // 2. 檢查信箱是否已經被註冊過
+        // 檢查信箱是否已經被註冊過
         const userExist = await User.findOne({ email });
         if (userExist) {
             return res.status(400).json({ message: '此信箱已被註冊！' });
         }
 
-        // 3. 建立新使用者 (密碼暫時存明碼，之後可加分做加密)
+        // ✨ 2. 密碼加密 (Hash)
+        // 10 是 salt rounds (運算強度)，數字越大越安全但越慢，10 是標準值
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // 建立新使用者 (存入加密後的密碼)
         const newUser = new User({
             email,
-            password,
+            password: hashedPassword, // ✨ 這裡存入 hashedPassword，而不是原本的 password
             nickname
         });
 
-        // 4. 存入資料庫
         await newUser.save();
 
-        // 5. 回傳成功訊息
         res.status(201).json({ message: '註冊成功！請重新登入', user: newUser });
 
     } catch (error) {
@@ -40,19 +42,21 @@ router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // 1. 找看看有沒有這個使用者
+        // 找看看有沒有這個使用者
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(404).json({ message: '找不到此帳號' });
         }
 
-        // 2. 檢查密碼是否正確 (這裡先用明碼比對，進階可改用 bcrypt)
-        if (user.password !== password) {
+        // ✨ 3. 密碼比對 (Compare)
+        // 使用 bcrypt.compare(使用者輸入的明碼, 資料庫裡的亂碼)
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
             return res.status(401).json({ message: '密碼錯誤' });
         }
 
-        // 3. 登入成功！回傳使用者資料 (不包含密碼)
-        // 前端會把這個 user._id 存起來，當作「登入證名」
+        // 登入成功！回傳資料
         res.json({
             message: '登入成功',
             user: {

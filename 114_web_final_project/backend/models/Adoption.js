@@ -1,21 +1,21 @@
 // backend/models/Adoption.js
-// [檔案功能] 認養關聯表：紀錄「哪個使用者」在「什麼時候」認養了「哪隻動物」
-// 對應 P0 功能：核心互動 (User <-> Animal 關聯)
-
 const mongoose = require('mongoose');
 
 const adoptionSchema = new mongoose.Schema({
-    user_id: {
+    // ✨ 這裡必須是 userId，不能是 user_id
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User', // 關聯到 User 模型
+        ref: 'User',
         required: true
     },
-    animal_id: {
+    // ✨ 這裡必須是 animalId，不能是 animal_id
+    animalId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Animal', // 關聯到 Animal 模型
+        ref: 'Animal',
         required: true
     },
-    adoption_date: {
+    // ✨ 這裡必須是 adoptDate
+    adoptDate: {
         type: Date,
         default: Date.now
     }

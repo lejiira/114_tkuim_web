@@ -2,6 +2,14 @@
 // [檔案功能] 智慧導覽列：根據 localStorage 中的登入狀態，動態切換顯示「登入/註冊」或「會員中心/登出」
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import {
+    GlobeAmericas,
+    HouseDoorFill,
+    BoxArrowInRight,
+    PersonPlusFill,
+    PersonCircle,
+    BoxArrowRight
+} from 'react-bootstrap-icons';
 
 function Navbar() {
     const navigate = useNavigate(); // 用來做登出後的頁面跳轉
@@ -31,7 +39,7 @@ function Navbar() {
 
     // --- 樣式設定 (維持原樣，新增 button 樣式) ---
     const navStyle = {
-        background: '#333',
+        background: '#2e5c31ff',
         color: 'white',
         padding: '10px 20px',
         display: 'flex',
@@ -60,25 +68,25 @@ function Navbar() {
             {/* Logo 區域 */}
             <div style={{ fontSize: '20px', fontWeight: 'bold', marginRight: 'auto' }}>
                 <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
-                    瀕危動物網
+                    <GlobeAmericas size={24} />瀕危動物網
                 </Link>
             </div>
 
-            <Link to="/" style={linkStyle}>首頁</Link>
+            <Link to="/" style={linkStyle}><HouseDoorFill />首頁</Link>
 
             {/* 3. 條件渲染：根據 user 是否存在來決定顯示什麼 */}
             {user ? (
                 // --- 如果有登入 (顯示這區塊) ---
                 <>
                     <span style={{ color: '#aaa' }}>Hi, {user.nickname}</span>
-                    <Link to="/dashboard" style={linkStyle}>會員中心</Link>
-                    <button onClick={handleLogout} style={buttonStyle}>登出</button>
+                    <Link to="/dashboard" style={linkStyle}><PersonCircle />會員中心</Link>
+                    <button onClick={handleLogout} style={buttonStyle}><BoxArrowRight />登出</button>
                 </>
             ) : (
                 // --- 如果沒登入 (顯示這區塊) ---
                 <>
-                    <Link to="/login" style={linkStyle}>登入</Link>
-                    <Link to="/register" style={linkStyle}>註冊</Link>
+                    <Link to="/login" style={linkStyle}><BoxArrowInRight />登入</Link>
+                    <Link to="/register" style={linkStyle}><PersonPlusFill />註冊</Link>
                 </>
             )}
         </nav>

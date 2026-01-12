@@ -12,7 +12,7 @@ const animalSchema = new mongoose.Schema({
         type: String, // 圖片通常存 URL
         required: true
     },
-    conservation_level: {
+    status: {
         type: String, // 例如： "極危", "瀕危", "易危"
         enum: ['極危', '瀕危', '易危', '無危'], // 限制只能填這些
         required: true

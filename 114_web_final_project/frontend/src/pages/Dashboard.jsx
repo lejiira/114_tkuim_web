@@ -88,7 +88,6 @@ function Dashboard() {
 
     return (
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <h1>👤 會員中心</h1>
             {user && <h3>歡迎回來，{user.nickname}！</h3>}
 
             <h4>我的認養清單 ({adoptions.length})</h4>
@@ -101,7 +100,7 @@ function Dashboard() {
                         <li key={record._id} style={itemStyle}>
                             {/* 注意：因為後端用了 populate，所以 record.animalId 現在是完整的動物物件 */}
                             <img
-                                src={record.animalId?.imageUrl || "https://via.placeholder.com/100"}
+                                src={record.animalId?.image || "https://via.placeholder.com/100"}
                                 alt="animal"
                                 style={imgStyle}
                             />

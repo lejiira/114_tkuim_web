@@ -1,0 +1,94 @@
+/* src/App.css */
+
+/* 1. 定義全站主色調 */
+:root {
+    --main-green: #2E5C31;
+    /* 深森林綠 (參考你的截圖) */
+    --light-green: #F1F8F2;
+    /* 淺綠背景 */
+    --accent-orange: #F4A261;
+    /* 暖橘色 (按鈕用) */
+    --text-dark: #333333;
+}
+
+body {
+    font-family: "Microsoft JhengHei", sans-serif;
+    /* 強制使用微軟正黑體 */
+    color: var(--text-dark);
+}
+
+/* 2. Hero Section (首頁大圖區) */
+.hero-section {
+    background-image: url('/images/hero.jpg');
+    /* 讀取你剛剛放的圖片 */
+    background-size: cover;
+    background-position: center;
+    height: 85vh;
+    /* 佔據螢幕高度的 85% */
+    display: flex;
+    align-items: center;
+    /* 垂直置中 */
+    justify-content: center;
+    /* 水平置中 */
+    position: relative;
+}
+
+/*在大圖上蓋一層半透明黑紗，讓白字更清楚*/
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    /* 確保水平置中 */
+}
+
+/* 3. 自定義按鈕樣式 */
+.btn-nature {
+    background-color: var(--accent-orange);
+    color: white;
+    border-radius: 50px;
+    /* 圓角按鈕 */
+    padding: 10px 30px;
+    font-weight: bold;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-nature:hover {
+    background-color: #e76f51;
+    /* 滑鼠移過去變深橘色 */
+    color: white;
+    transform: translateY(-3px);
+    /* 微微浮起的效果 */
+}
+
+/* 4. 區塊標題裝飾 */
+.section-title {
+    color: var(--main-green);
+    font-weight: bold;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+/* 在標題下面加一條綠色底線 */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-orange);
+    margin: 10px auto;
+}
