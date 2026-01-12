@@ -5,24 +5,27 @@
 
 ## 使用技術
 ### 前端開發 (Frontend)
-- 核心框架：React.js (Vite)
-- 路由管理：React Router DOM (SPA 單頁式應用體驗)
-- UI 框架：React-Bootstrap & Bootstrap 5 
-- 圖示庫：React Bootstrap Icons 
-- 狀態管理：React Hooks (useState, useEffect)
-- 樣式設計：CSS Modules & Custom Variables 
+- **核心框架**：React.js (Vite)
+- **路由管理**：React Router DOM (SPA 單頁式應用體驗)
+- **UI 框架**：React-Bootstrap & Bootstrap 5 
+- **圖示庫**：React Bootstrap Icons 
+- **狀態管理**：React Hooks (useState, useEffect)
+- **樣式設計**：CSS Modules & Custom Variables 
+
 ### 後端開發 (Backend)
-- 執行環境：Node.js
-- Web 框架：Express.js (RESTful API 設計)
-- 安全性：Bcrypt.js (使用者密碼加密雜湊處理)
-- 跨域處理：CORS (Cross-Origin Resource Sharing)
-- 環境變數：Dotenv (管理資料庫連線字串等敏感資訊)
+- **執行環境**：Node.js
+- **Web 框架**：Express.js (RESTful API 設計)
+- **安全性**：Bcrypt.js (使用者密碼加密雜湊處理)
+- **跨域處理**：CORS (Cross-Origin Resource Sharing)
+- **環境變數**：Dotenv (管理資料庫連線字串等敏感資訊)
+
 ### 資料庫 (Database)
-- 資料庫：MongoDB (NoSQL 文件型資料庫)
-- ODM 工具：Mongoose (定義 Schema 與資料驗證)
-- 資料結構：設計了 Users (使用者)、Animals (動物)、Adoptions (認養紀錄) 三個主要集合。
+- **資料庫**：MongoDB (NoSQL 文件型資料庫)
+- **ODM 工具**：Mongoose (定義 Schema 與資料驗證)
+- **資料結構**：設計了 Users (使用者)、Animals (動物)、Adoptions (認養紀錄) 三個主要集合。
 
 ## 專案結構
+```text
 114_web_final_project/ 
 ├── .gitignore              # Git 忽略清單 (忽略 node_modules, .env 等)
 ├── README.md               # 專案說明文件 (包含簡介、安裝教學、API 規格)
@@ -69,66 +72,102 @@
     ├── index.html          # 網頁骨架
     ├── package.json        # 前端套件清單 (react, bootstrap, react-router-dom...)
     └── vite.config.js      # Vite 設定檔
+```
 
 ## 使用指引 (User Guide)
 當後端與前端都順利啟動後，請依照以下流程體驗本平台：
-- 進入首頁： 打開瀏覽器前往 http://localhost:5173。您會看到全螢幕的森林意象主視覺，以及下方的瀕危動物列表。
-- 註冊會員 (Register)： 點擊右上角「註冊」，輸入 Email、暱稱與密碼建立帳號。系統會自動將密碼加密後存入資料庫。
-- 登入系統 (Login)： 使用剛註冊的帳號登入。登入成功後，導覽列會顯示「Hi, [您的暱稱]」與「會員中心」按鈕。
-- 進行認養 (Adopt)： 回到首頁，挑選喜歡的動物，點擊卡片下方的「我要認養」按鈕。
-- 若未登入：系統會彈出警示並導向登入頁。
-- 若已登入：系統會顯示認養成功訊息，並將資料寫入資料庫。
-- 會員中心 (Dashboard)： 點擊導覽列的「會員中心」，您可以查看所有已認養的動物清單。
-- 取消認養：若想取消，點擊該動物旁的「取消認養」按鈕，資料即會從資料庫中移除。
+- **進入首頁**： 打開瀏覽器前往 `http://localhost:5173`。您會看到全螢幕的森林意象主視覺，以及下方的瀕危動物列表。
+- **註冊會員 (Register)**： 點擊右上角「註冊」，輸入 Email、暱稱與密碼建立帳號。系統會自動將密碼加密後存入資料庫。
+- **登入系統 (Login)**： 使用剛註冊的帳號登入。登入成功後，導覽列會顯示「Hi, [您的暱稱]」與「會員中心」按鈕。
+- **進行認養 (Adopt)**： 回到首頁，挑選喜歡的動物，點擊卡片下方的「我要認養」按鈕。
+    - **若未登入**：系統會彈出警示並導向登入頁。
+    - **若已登入**：系統會顯示認養成功訊息，並將資料寫入資料庫。
+- **會員中心 (Dashboard)**： 點擊導覽列的「會員中心」，您可以查看所有已認養的動物清單。
+- **取消認養**：若想取消，點擊該動物旁的「取消認養」按鈕，資料即會從資料庫中移除。
 
 ## 安裝與啟動方式
-1. 環境準備
-請確保電腦已安裝 Node.js (v14.0 以上版本)。
-請確保電腦已安裝 Git。
-請確保有可用的 MongoDB 資料庫連線字串 (本機或 Atlas 皆可)。
-2. 後端安裝與啟動 (Backend)
+
+### 1. 環境準備
+- 請確保電腦已安裝 Node.js (v14.0 以上版本)。
+- 請確保電腦已安裝 Git。
+- 請確保有可用的 MongoDB 資料庫連線字串 (本機或 Atlas 皆可)。
+
+### 2. 後端安裝與啟動 (Backend)
 請開啟一個終端機 (Terminal)視窗，執行以下指令：
+
 進入後端資料夾
+```bash
 cd backend
+```
+
 安裝依賴套件
+```bash
 npm install
-設定環境變數 請在 backend/ 目錄下建立一個名為 .env 的檔案，並貼入以下內容：
+```
+
+設定環境變數：請在 `backend/` 目錄下建立一個名為 `.env` 的檔案，並貼入以下內容：
+```env
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/animals_db
-若使用 MongoDB Atlas，請將上面的網址換成您的雲端連線字串
-1. 初始化資料庫 (寫入種子資料)
+# 若使用 MongoDB Atlas，請將上面的網址換成您的雲端連線字串
+```
+
+初始化資料庫 (寫入種子資料)
+```bash
 node seed.js
-2. 啟動伺服器
+```
+
+啟動伺服器
+```bash
 npm run dev
-(成功時會顯示：🚀 伺服器啟動於 http://localhost:5000)
-3. 前端安裝與啟動 (Frontend)
-請開啟 第二個 終端機 (Terminal)視窗，執行以下指令：
+```
+(成功時會顯示：🚀 伺服器啟動於 `http://localhost:5000`)
+
+### 3. 前端安裝與啟動 (Frontend)
+請開啟 **第二個** 終端機 (Terminal)視窗，執行以下指令：
+
 進入前端資料夾
+```bash
 cd frontend
+```
+
 安裝依賴套件
+```bash
 npm install     
-4. 啟動開發環境
+```
+
+啟動開發環境
+```bash
 npm run dev
-(成功時會顯示：Local: http://localhost:5173/)
+```
+(成功時會顯示：Local: `http://localhost:5173/`)
 
 ## 功能特色
-1. 安全與權限管理
-密碼加密存儲：實作 Bcrypt 加密技術，確保使用者密碼在資料庫中以雜湊碼 (Hash) 形式儲存，非明碼存儲，保障資安。
-2. 動態導覽列 (Smart Navbar)：
-未登入狀態：顯示「首頁」、「登入」、「註冊」。
-已登入狀態：自動切換顯示「Hi, 暱稱」、「會員中心」、「登出」。
-3. 強制登入驗證：使用者瀏覽動物清單時無需登入，但在點擊「我要認養」時，系統會強制檢查登入狀態；若未登入，將自動導向登入頁面，確保每一筆認養紀錄都有對應的使用者。
+### 1. 安全與權限管理
+**密碼加密存儲**：實作 Bcrypt 加密技術，確保使用者密碼在資料庫中以雜湊碼 (Hash) 形式儲存，非明碼存儲，保障資安。
+
+### 2. 動態導覽列 (Smart Navbar)
+- **未登入狀態**：顯示「首頁」、「登入」、「註冊」。
+- **已登入狀態**：自動切換顯示「Hi, 暱稱」、「會員中心」、「登出」。
+
+### 3. 強制登入驗證
+使用者瀏覽動物清單時無需登入，但在點擊「我要認養」時，系統會強制檢查登入狀態；若未登入，將自動導向登入頁面，確保每一筆認養紀錄都有對應的使用者。
 
 ## CRUD 完整實作
-C (Create),新增使用者：訪客註冊會員帳號。新增認養：使用者點擊按鈕建立認養單。,Register.jsx (POST /api/auth/register)Home.jsx (POST /api/adopt)
-R (Read),讀取動物列表：首頁載入所有瀕危動物。讀取認養紀錄：會員中心顯示個人的認養清單。登入驗證：比對帳號密碼。,Home.jsx (GET /api/animals)Dashboard.jsx (GET /api/adopt/user/:id)Login.jsx (POST /api/auth/login)
-U (Update),資料更新：(後端架構已預留) 目前主要應用於 User Session 狀態更新與種子資料的批次更新。,後端 seed.js 實作了批次更新動物資料庫的功能。
-D (Delete),取消認養：使用者在會員中心可刪除特定的認養紀錄。,Dashboard.jsx (DELETE /api/adopt/:id)
+
+| 項目 | 功能說明 | 相關檔案與 API |
+| :--- | :--- | :--- |
+| **C (Create)** | **新增使用者**：訪客註冊會員帳號。<br>**新增認養**：使用者點擊按鈕建立認養單。 | `Register.jsx` (POST `/api/auth/register`)<br>`Home.jsx` (POST `/api/adopt`) |
+| **R (Read)** | **讀取動物列表**：首頁載入所有瀕危動物。<br>**讀取認養紀錄**：會員中心顯示個人的認養清單。<br>**登入驗證**：比對帳號密碼。 | `Home.jsx` (GET `/api/animals`)<br>`Dashboard.jsx` (GET `/api/adopt/user/:id`)<br>`Login.jsx` (POST `/api/auth/login`) |
+| **U (Update)** | **資料更新**：(後端架構已預留) 目前主要應用於 User Session 狀態更新與種子資料的批次更新。 | 後端 `seed.js` 實作了批次更新動物資料庫的功能。 |
+| **D (Delete)** | **取消認養**：使用者在會員中心可刪除特定的認養紀錄。 | `Dashboard.jsx` (DELETE `/api/adopt/:id`) |
 
 ## 未來展望
-1. 實質捐款整合 
+### 1. 實質捐款整合 
 目前的「認養」為虛擬承諾。未來預計串接第三方金流 (如 Stripe 或 ECPay)，讓使用者的點擊能轉化為實際的保育資金。
-2. 電子報與成果追蹤 
+
+### 2. 電子報與成果追蹤 
 當使用者認養動物後，系統將定期發送電子郵件，回報該物種的復育進度或保育團體的資金運用報告，讓捐款公開透明，增強使用者的信任感與持續參與意願。
-3. 遊戲化成就系統 
+
+### 3. 遊戲化成就系統 
 設計「保育勳章」或「等級制度」，根據使用者的認養數量或捐款金額給予虛擬獎勵，增加平台的趣味性與黏著度。
